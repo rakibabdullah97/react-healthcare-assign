@@ -13,10 +13,12 @@ Live Site Link :
 
 ## What Can you do 
 
-- User Can get Access To Medical Help
+- User Can get Access To Medical Help 24/7
 - Look for their reports online
 - Book An appointment
 - Get In direact touch with doc at any time
+- they also can get updates from our news portal
+- for firebase auth their info will be secure
 
 ## What I Have done
 
