@@ -1,0 +1,14 @@
+.footer{
+    color: rgb(10, 1, 1);
+   
+}
+.footer li{
+    list-style: none;
+}
+.footer a{
+    color: rgb(26, 2, 2);
+    font-weight: 500;
+    font-size: 16px;
+    margin-right: 15px;
+    opacity: .7;
+}
