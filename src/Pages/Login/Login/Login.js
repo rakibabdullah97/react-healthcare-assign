@@ -1,15 +1,26 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { FaKey } from 'react-icons/fa'
 import useAuth from '../../../Hooks/useAuth';
 
 
 
 const Login = () => {
-    const { signInUsingGoogle, handleUserLogin } = useAuth()
+    const { signInUsingGoogle, handleUserLogin, setError,error } = useAuth()
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const history = useHistory()
+    const location = useLocation()
+    const redirect_url = location.state?.from || './details'
+
+    const handleGoogleLogin = () => {
+        signInUsingGoogle()
+            .then(result => {
+                history.push(redirect_url)
+            })
+            .catch((error) => setError(error.message));
+    }
 
     const handleEmail = (e) => {
         setEmail(e.target.value);
@@ -20,7 +31,7 @@ const Login = () => {
     const handleLogin = () => {
         handleUserLogin(email, password);
     };
-    
+
     return (
         <div>
             <div className="container m-2 d-flex justify-content-center my-5 ">
@@ -29,17 +40,19 @@ const Login = () => {
                     <div className="mb-3">
                         <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                         <input onChange={handleEmail} required style={{ width: "350px" }} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                        <p> {error}</p>
                         <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                     </div>
                     <div className="mb-3 ">
                         <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                         <input onChange={handlePassword} required style={{ width: "350px" }} type="password" className="form-control " id="exampleInputPassword1" />
+                        <p>{error}</p>
                     </div>
                     <button onClick={handleLogin} type="submit" className="btn btn-primary">Submit</button>
-                    <button onClick={signInUsingGoogle} className="btn btn-primary m-2">google Sign in</button>
+                    <button onClick={handleGoogleLogin} className="btn btn-success m-2">google Sign in</button>
                     <div className=''>
                         <p>New Here?</p><Link to='/register'>
-                            <button type="submit" className="btn btn-primary">Register Now</button>
+                            <button type="submit" className="btn btn-info">Register Now</button>
                         </Link>
 
                     </div>

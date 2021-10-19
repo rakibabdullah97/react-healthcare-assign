@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 
 const Register = () => {
+    //firebase data fetched here
     const {handleUserRegister} = useAuth()
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    //email and password handler
     const handleEmail =(e)=>{
         setEmail(e.target.value)
     };

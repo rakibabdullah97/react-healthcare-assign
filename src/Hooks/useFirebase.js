@@ -10,27 +10,27 @@ initializeAuthentication();
 
 const useFirebase = () => {
     const [user, setUser] = useState({})
+    const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(true)
 
     const auth = getAuth()
     const googleProvider = new GoogleAuthProvider()
 
-
+    ///google sign method implemented
     const signInUsingGoogle = () => {
         setIsLoading(true)
-        signInWithPopup(auth, googleProvider)
-            .then(result => {
-                setUser(result.user)
-            })
+        return signInWithPopup(auth, googleProvider)
             .finally(() => setIsLoading(false))
     };
+    //log out implemented
     const logOut = () => {
         setIsLoading(true)
         signOut(auth)
             .then(() => {
                 setUser({})
-                    .finally(() => setIsLoading(false))
+
             })
+            .finally(() => setIsLoading(false))
     }
     useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, (user) => {
@@ -45,23 +45,35 @@ const useFirebase = () => {
         return () => unsubscribed;
     }, [])
 
+    //register method implemented
     const handleUserRegister = (email, password) => {
         createUserWithEmailAndPassword(auth, email, password)
             .then((result) => {
                 setUser(result.user);
-                
+                setError("");
             })
+            .catch((error) => {
+                const errorMessage = error.message;
+                setError(errorMessage)
+            });
     }
-     
-    const handleUserLogin =(email,password)=>{
-        signInWithEmailAndPassword(auth,email,password)
-        .then((result)=>{
-            setUser(result.user)
-        })
+    //login method implemented
+    const handleUserLogin = (email, password) => {
+        signInWithEmailAndPassword(auth, email, password)
+            .then((result) => {
+                setUser(result.user)
+                setError("");
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                setError(errorMessage)
+            });
     }
     return {
         user,
+        error,
         isLoading,
+        setError,
         signInUsingGoogle,
         handleUserRegister,
         handleUserLogin,

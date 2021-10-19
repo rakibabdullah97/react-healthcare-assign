@@ -5,6 +5,7 @@ import useAuth from '../../../Hooks/useAuth';
 
 
 const Header = () => {
+    //fetched usefirebase data by useAuth
     const {user,logOut} = useAuth()
     return (
         <>

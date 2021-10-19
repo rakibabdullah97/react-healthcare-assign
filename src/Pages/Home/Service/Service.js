@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Service = ({ service }) => {
+    //decontruched data from service
     const { name, img,info,id } = service
     return (
         <div>
