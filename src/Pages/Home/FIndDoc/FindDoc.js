@@ -52,7 +52,7 @@ const FindDoc = () => {
                     </div>
                 </div>
                 <div className="col-12">
-                    <button type="submit" className="btn btn-success">Get A Doc</button>
+                    <button type="submit" className="btn btn-danger">Get A Doc Now!</button>
                 </div>
             </form>
         </div>
