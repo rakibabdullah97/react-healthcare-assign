@@ -5,6 +5,7 @@ import {
 } from "firebase/auth";
 import initializeAuthentication from "../Pages/Login/Firebase/Firebase.init";
 
+//firebase initialized here
 initializeAuthentication();
 
 
@@ -13,6 +14,7 @@ const useFirebase = () => {
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(true)
 
+    //get auth called
     const auth = getAuth()
     const googleProvider = new GoogleAuthProvider()
 
@@ -32,6 +34,7 @@ const useFirebase = () => {
             })
             .finally(() => setIsLoading(false))
     }
+    //observer implemented 
     useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, (user) => {
             if (user) {
