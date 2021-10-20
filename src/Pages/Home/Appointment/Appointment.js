@@ -18,7 +18,7 @@ const Appointment = () => {
                     <label htlmFor="inputAddress" className="form-label">Address</label>
                     <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
                 </div>
-                <div className="col-12">
+                <div className="col-5">
                     <label htlmFor="inputAge" className="form-label">Your Age</label>
                     <input type="number" className="form-control" id="inputAddress2" placeholder="age please" />
                 </div>

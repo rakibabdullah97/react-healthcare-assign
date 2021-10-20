@@ -1,11 +1,12 @@
 import React from 'react';
+import './Banner.css'
 import banner1 from '../../../images/banner-1.jpg'
 import banner2 from '../../../images/banner-2.jpeg'
 import banner3 from '../../../images/banner-3.jpg'
 const Banner = () => {
     return (
         <div>
-            <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
+            <div id="carouselExampleCaptions" className="carousel slide " data-bs-ride="carousel">
                 <div className="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
